@@ -1,0 +1,374 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load tips dataset
+tips = sns.load_dataset("tips")
+
+# Boxplot of total bill by day
+sns.boxplot(x="day", y="total_bill", data=tips, palette="coolwarm")
+plt.title("Restaurant Bills by Day")
+plt.show()
+
+x="day" → Categories (Thur, Fri, Sat, Sun) shown on X-axis.
+
+y="total_bill" → Continuous variable (bill amounts) shown on Y-axis.
+
+data=tips → Uses the "tips" dataset.
+
+palette="coolwarm" → Adds a nice color style.
+
+🔎 What it shows:
+
+For each day, you get a box showing distribution of total bills.
+
+The line inside the box = median bill.
+
+The box edges = Q1 (25th percentile) and Q3 (75th percentile).
+
+The whiskers = spread of most bills.
+
+The dots outside whiskers = outliers (very high bills).
+
+What is a Heatmap?
+
+A heatmap is a graphical representation of data where values are shown as colors.
+
+Darker/brighter colors → higher values
+
+Lighter colors → lower values
+
+Often used for correlation matrices or to show values in a 2D table.
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+iris = sns.load_dataset("iris")
+
+# Select only numeric columns for correlation
+corr = iris.select_dtypes(include=["float", "int"]).corr()
+
+# Create heatmap
+sns.heatmap(corr, annot=True, cmap="coolwarm", linewidths=0.5)
+
+plt.title("Correlation Heatmap - Iris Dataset")
+plt.show()
+
+Calculates correlation between numerical columns.
+
+Values range from -1 to +1:
+
++1 → perfect positive correlation (as one increases, the other increases).
+
+-1 → perfect negative correlation (as one increases, the other decreases).
+
+0 → no correlation.
+
+corr → gives values to plot.
+
+annot=True → shows numbers inside the squares.
+
+cmap="coolwarm" → color scheme (blue = low, red = high).
+
+linewidths=0.5 → adds small lines between squares for clarity.
+
+What is a Pairplot?
+
+A pairplot is a grid of plots that shows relationships between all numerical variables in a dataset:
+
+Diagonal → histograms (or KDE plots) of each variable.
+
+Off-diagonal → scatterplots between pairs of variables.
+
+It’s very useful for exploring datasets with multiple numeric features.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset
+iris = sns.load_dataset("iris")
+
+# Create pairplot
+sns.pairplot(iris, hue="species", palette="husl")
+
+plt.suptitle("Pairplot of Iris Dataset", y=1.02)
+plt.show()
+iris → dataset to use.
+
+hue="species" → colors points by flower species
+
+
+Supervised Machine Learning:
+What is Supervised Machine Learning?
+
+Supervised learning is a type of machine learning where:
+
+You have a labeled dataset (input features + known output/target).
+
+The model learns the mapping from input → output.
+
+After training, it can predict outputs for new, unseen inputs.
+
+👉 “Supervised” means the algorithm is guided by correct answers (labels) during training.
+
+🔹 Key Components
+
+Features (X) → Input variables (e.g., size of house, number of rooms).
+
+Target (y) → Output variable we want to predict (e.g., house price).
+
+Model → The algorithm (e.g., Linear Regression, Decision Tree).
+
+Training → Model learns from known input-output pairs.
+
+Prediction → Apply model to new data to estimate outputs.
+
+🔹 Types of Supervised Learning
+
+Regression (when target is continuous)
+
+Example: Predict house price, temperature, or salary.
+
+Algorithms: Linear Regression, Decision Tree Regression, Random Forest, etc.
+
+Classification (when target is categorical)
+
+Example: Spam vs. Not Spam, Disease vs. No Disease, Sentiment (Positive/Negative).
+
+Algorithms: Logistic Regression, KNN, SVM, Decision Trees, Neural Networks.
+
+🔹 Workflow of Supervised Learning
+
+Collect & preprocess data
+
+Split dataset → Train set + Test set
+
+Choose an algorithm
+
+Train the model on training data
+
+Evaluate model performance (accuracy, MSE, precision, recall, etc.)
+Tune model parameters (hyperparameters)
+
+Deploy for predictions
+
+Real-Life Examples
+
+Predicting emails → Spam / Not Spam
+
+Predicting bank loan approval
+
+Predicting house prices
+
+Diagnosing diseases from medical data
+
+Classifying images (cat vs dog)
+
+Machine Learning Foundations
+1. What is Machine Learning?
+
+Machine Learning is about teaching computers to learn patterns from data instead of being explicitly programmed.
+
+ML models generalize from training data to make predictions on unseen data.
+
+2. Types of Machine Learning
+
+Supervised Learning
+
+Data has input features (X) and labeled outputs (y).
+
+Examples: House price prediction, spam detection.
+
+Algorithms: Linear Regression, Logistic Regression, Decision Trees, SVM.
+
+Unsupervised Learning
+
+Data has only inputs (X), no labels.
+
+Goal: Find hidden structure (clusters, patterns).
+
+Examples: Customer segmentation, anomaly detection.
+
+Algorithms: K-Means, PCA, DBSCAN.
+
+Reinforcement Learning
+
+Agent learns by interacting with environment using trial & error.
+
+Examples: Self-driving cars, AlphaGo.
+
+3. Core Concepts
+
+Dataset → Collection of examples (rows = samples, columns = features).
+
+Features (X) → Input variables.
+
+Target (y) → Output variable (in supervised learning).
+
+Model → Algorithm mapping inputs → outputs.
+
+Training → Learning patterns from data.
+
+Evaluation → Measuring performance (accuracy, RMSE, precision, recall).
+
+Overfitting → Model memorizes training data, fails on new data.
+
+Underfitting → Model too simple, fails to capture patterns.
+
+Exploratory Data Analysis (EDA)
+1. What is EDA?
+
+EDA is the process of analyzing datasets visually and statistically to:
+
+Understand data structure
+
+Detect patterns, trends, and relationships
+
+Identify missing values, outliers, and anomalies
+
+Guide feature engineering & model selection
+
+2. Steps in EDA
+
+Data Collection → Gather dataset (CSV, database, API).
+
+Data Inspection → Check shape, data types, first few rows.
+
+Descriptive Statistics → Mean, median, mode, std, quartiles.
+
+Data Cleaning → Handle missing values, duplicates, outliers.
+
+Data Visualization
+
+Univariate Analysis → Histograms, Countplots
+
+Bivariate Analysis → Scatterplots, Boxplots
+
+Multivariate Analysis → Heatmaps, Pairplots
+
+Feature Engineering → Create new meaningful variables.
+
+1. Artificial Intelligence (AI)
+
+AI is the broadest concept.
+
+Goal: Create machines that can think, reason, and act like humans.
+
+AI ≠ always learning; it can also include rule-based systems.
+
+✅ Examples:
+
+Chess-playing program (like Deep Blue)
+
+Virtual assistants (Siri, Alexa)
+
+Rule-based expert systems
+
+2. Machine Learning (ML)
+
+Subset of AI.
+
+Instead of being explicitly programmed, ML systems learn patterns from data.
+
+Uses statistical methods to predict outcomes.
+
+✅ Examples:
+
+Predicting house prices (regression)
+
+Spam email detection (classification)
+
+Customer segmentation (clustering)
+
+👉 All ML is AI, but not all AI is ML.
+
+3. Deep Learning (DL)
+
+Subset of Machine Learning.
+
+Uses neural networks with many layers (hence “deep”).
+
+Very powerful for unstructured data: images, audio, text.
+
+Needs huge datasets and high computational power (GPUs).
+
+✅ Examples:
+
+Self-driving cars (object detection with CNNs)
+
+Voice assistants (speech recognition with RNNs/Transformers)
+
+ChatGPT (uses deep learning transformers)
+
+1. Train-Test Split
+
+When building ML models, we don’t use all data for training.
+We split the dataset into:
+
+Training set → Used to train (fit) the model. (~70–80%)
+
+Testing set → Used to evaluate performance on unseen data. (~20–30%)
+
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+# Example dataset
+data = {
+    "age": [25,30,35,40,45,50,55,60],
+    "salary": [2500,3000,4000,5000,6000,7000,8000,9000],
+    "purchased": [0,0,0,1,1,1,1,1]   # Target
+}
+df = pd.DataFrame(data)
+
+X = df[["age", "salary"]]   # Features
+y = df["purchased"]         # Target
+
+# Split: 70% train, 30% test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+print("Train size:", len(X_train))
+print("Test size:", len(X_test))
+
+2. Data Preprocessing
+
+Before training, raw data needs cleaning and transformation.
+
+✨ Key Steps:
+
+Handling Missing Data
+
+Drop rows/columns OR fill with mean/median/mode.
+
+df.fillna(df.mean(), inplace=True)  # Example: replace NaN with mean
+
+
+Encoding Categorical Data
+
+ML models need numbers, not text.
+
+Convert categories → numbers.
+
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+le = LabelEncoder()
+df["gender_encoded"] = le.fit_transform(df["gender"])  
+
+
+Feature Scaling (Normalization/Standardization)
+
+Ensures all features are on similar scale.
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+
+Removing Outliers
+
+Use boxplots, z-score, or IQR to detect extreme values.
+
+Train-Test Split
+
+Always split before scaling/normalization to avoid data leakage.
